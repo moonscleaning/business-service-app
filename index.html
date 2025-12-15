@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Form</title>
+    <style>
+        body { font-family: sans-serif; padding: 20px; }
+        form { max-width: 400px; margin: auto; }
+        input, textarea, button { width: 100%; margin-bottom: 10px; padding: 10px; box-sizing: border-box; }
+    </style>
+</head>
+<body>
+
+    <form name="submit-to-google-sheet">
+        <h2>Contact Us</h2>
+        <input name="Name" type="text" placeholder="Your Name" required>
+        <input name="Phone" type="number" placeholder="Phone Number" required>
+        <textarea name="Message" placeholder="Your Message" required rows="5"></textarea>
+        <button type="submit">Send Message</button>
+    </form>
+
+    <script>
+        // ▼▼▼ 여기에 웹 앱 URL을 붙여넣으세요 ▼▼▼
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbzAkSDV4qNBUnNkMYRJJ-vgse3nfkT8XoqBEVnQDJYy71dPzYbeA3vHW68ON6iM6e3ixg/exec'
+        const form = document.forms['submit-to-google-sheet']
+
+        form.addEventListener('submit', e => {
+            e.preventDefault()
+            fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+            .then(response => {
+                // 성공했을 때 뜨는 메시지 (영어)
+                alert("Success! Your message has been sent successfully.")
+                // 폼 내용 비우기
+                form.reset();
+            })
+            .catch(error => {
+                // 실패했을 때 뜨는 메시지 (영어)
+                alert("Error! Something went wrong. Please try again.")
+            })
+        })
+    </script>
+
+</body>
+</html>
