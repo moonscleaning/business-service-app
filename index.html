@@ -3,68 +3,64 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Moon's Cleaning - Kelowna's Premier Cleaning Service</title>
+    <title>Moon's Cleaning - Kelowna's Trusted Family Business</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     
     <style>
-        /* === 1. 전체 설정 === */
+        /* === 1. 기본 설정 === */
         :root {
-            --primary-navy: #0f172a; /* 더 깊은 밤하늘색 */
-            --accent-yellow: #fcd34d; /* 달빛 옐로우 */
-            --text-color: #334155;
+            --primary-navy: #0f172a; 
+            --accent-yellow: #fcd34d; 
+            --text-dark: #334155;
         }
 
         body, html {
             margin: 0;
             padding: 0;
             font-family: 'Poppins', sans-serif;
-            color: var(--text-color);
-            overflow-x: hidden; /* 가로 스크롤 방지 */
+            color: var(--text-dark);
+            overflow-x: hidden;
             scroll-behavior: smooth;
         }
 
         a { text-decoration: none; color: inherit; }
 
-        /* === 2. 헤더 (고정 내비게이션) === */
+        /* === 2. 헤더 (로고 왼쪽 정렬) === */
         header {
             position: fixed;
             top: 0;
             width: 100%;
-            background: rgba(15, 23, 42, 0.9); /* 반투명 네이비 */
-            backdrop-filter: blur(5px);
-            padding: 15px 0;
+            background: rgba(15, 23, 42, 0.95);
+            padding: 15px 20px; /* 좌우 여백 추가 */
             z-index: 1000;
-            transition: 0.3s;
+            box-sizing: border-box;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
         }
 
         .nav-container {
             max-width: 1200px;
             margin: 0 auto;
             display: flex;
-            justify-content: space-between;
+            justify-content: flex-start; /* 왼쪽 정렬 */
             align-items: center;
-            padding: 0 20px;
         }
 
         .logo {
             font-size: 1.5rem;
             font-weight: 700;
             color: var(--accent-yellow);
-            cursor: pointer;
             display: flex;
             align-items: center;
             gap: 10px;
         }
 
-        .logo i { font-size: 1.2rem; }
-
-        /* === 3. 히어로 섹션 (풀스크린 배너) === */
+        /* === 3. 메인 배너 (Moon Illustration) === */
         .hero {
-            height: 100vh; /* 화면 전체 높이 */
-            /* 깃허브에 올린 이미지 이름이 banner.jpg 여야 합니다 */
+            height: 100vh;
+            /* 깃허브의 banner.jpg 사용 */
             background-image: url('banner.jpg'); 
-            background-attachment: fixed; /* 패럴랙스 효과 (배경 고정) */
+            background-attachment: fixed;
             background-position: center;
             background-repeat: no-repeat;
             background-size: cover;
@@ -75,15 +71,12 @@
             text-align: center;
         }
 
-        /* 배경 어둡게 하는 오버레이 (글씨 잘 보이게) */
+        /* 배너 오버레이 (글씨 가독성) */
         .hero::before {
             content: '';
             position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.5); /* 50% 어둡게 */
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0, 0, 0, 0.4);
         }
 
         .hero-content {
@@ -101,132 +94,169 @@
         }
 
         .hero p {
-            font-size: 1.2rem;
+            font-size: 1.3rem;
             margin: 20px 0 30px;
-            opacity: 0.9;
+            font-weight: 300;
         }
 
         .btn-cta {
-            display: inline-block;
             padding: 15px 40px;
             background-color: var(--accent-yellow);
             color: var(--primary-navy);
             font-weight: 700;
             border-radius: 50px;
             font-size: 1.1rem;
-            transition: transform 0.3s, box-shadow 0.3s;
+            transition: 0.3s;
+            box-shadow: 0 5px 15px rgba(252, 211, 77, 0.3);
         }
 
         .btn-cta:hover {
+            background-color: white;
             transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(252, 211, 77, 0.4);
-            background-color: #fff;
         }
 
-        /* === 4. 애니메이션 (스크롤하면 나타나기) === */
-        .hidden {
-            opacity: 0;
-            transform: translateY(50px); /* 아래에서 시작 */
-            transition: all 1s ease;
+        /* === 4. 오카나간 배경 섹션 (About + Services) === */
+        .okanagan-wrapper {
+            /* 오카나간 호수 느낌의 무료 이미지 (Unsplash) */
+            background-image: url('https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80');
+            background-attachment: fixed; /* 패럴랙스 효과 */
+            background-position: center;
+            background-size: cover;
+            padding: 100px 20px;
+            position: relative;
         }
 
-        .show {
-            opacity: 1;
-            transform: translateY(0);
+        /* 배경 위에 얇은 흰색 막을 씌워서 내용이 잘 보이게 함 */
+        .okanagan-wrapper::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(255, 255, 255, 0.3); /* 반투명 */
         }
 
-        /* === 5. 섹션 공통 스타일 === */
-        .section {
-            padding: 80px 20px;
+        .content-container {
+            position: relative;
+            z-index: 2;
             max-width: 1000px;
             margin: 0 auto;
         }
 
-        .section-title {
+        /* 섹션 박스 스타일 (유리 효과) */
+        .glass-box {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 50px;
+            margin-bottom: 50px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
             text-align: center;
+        }
+
+        .section-title {
             font-size: 2.2rem;
             color: var(--primary-navy);
-            margin-bottom: 50px;
-            position: relative;
+            margin-bottom: 30px;
+            font-weight: 700;
         }
 
-        .section-title::after {
-            content: '';
-            display: block;
-            width: 60px;
-            height: 4px;
-            background: var(--accent-yellow);
-            margin: 15px auto 0;
-            border-radius: 2px;
-        }
-
-        /* === 6. About Us === */
-        .about-box {
-            background: white;
-            padding: 40px;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-            text-align: center;
-            line-height: 1.8;
+        .about-text {
             font-size: 1.1rem;
+            line-height: 1.8;
+            color: #555;
         }
 
-        /* === 7. 서비스 카드 === */
+        /* 서비스 그리드 */
         .services-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
+            gap: 20px;
         }
 
-        .card {
+        .service-card {
             background: white;
             padding: 30px;
             border-radius: 15px;
-            text-align: center;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            border: 1px solid #eee;
             transition: 0.3s;
-            border-top: 5px solid transparent;
         }
 
-        .card:hover {
-            transform: translateY(-10px);
-            border-top-color: var(--accent-yellow);
-            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            border-color: var(--primary-navy);
         }
 
-        .card i {
-            font-size: 3rem;
+        .service-card i {
+            font-size: 2.5rem;
             color: var(--primary-navy);
-            margin-bottom: 20px;
+            margin-bottom: 15px;
         }
 
-        .card h3 { margin: 10px 0; color: var(--primary-navy); }
+        .service-card h3 { margin: 10px 0; color: var(--primary-navy); }
 
-        /* === 8. 견적 폼 === */
+        /* === 5. Contact 섹션 (다른 배경) === */
         .contact-section {
-            background-color: var(--primary-navy);
+            background-color: var(--primary-navy); /* 짙은 네이비 */
             color: white;
-            border-radius: 20px;
-            padding: 50px;
+            padding: 80px 20px;
             text-align: center;
+            position: relative;
         }
 
-        .contact-section h2 { color: white; border-color: var(--accent-yellow); }
-        .contact-section p { color: #ccc; margin-bottom: 30px; }
+        /* 배경 패턴 (심심하지 않게) */
+        .contact-section::after {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background-image: radial-gradient(circle at 20% 20%, rgba(255,255,255,0.05) 0%, transparent 50%);
+            pointer-events: none;
+        }
 
+        .contact-container {
+            max-width: 600px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        .contact-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            color: white;
+        }
+
+        .contact-section p {
+            color: #cbd5e1;
+            margin-bottom: 40px;
+        }
+
+        /* 폼 스타일 */
         form input, form textarea {
             width: 100%;
-            padding: 15px;
+            padding: 16px;
             margin-bottom: 15px;
             border: none;
             border-radius: 8px;
             font-family: 'Poppins', sans-serif;
+            font-size: 1rem;
             box-sizing: border-box;
+            background: rgba(255, 255, 255, 0.1); /* 반투명 입력창 */
+            color: white;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+
+        form input::placeholder, form textarea::placeholder {
+            color: #94a3b8;
+        }
+
+        form input:focus, form textarea:focus {
+            outline: none;
+            background: rgba(255, 255, 255, 0.2);
+            border-color: var(--accent-yellow);
         }
 
         form button {
             width: 100%;
-            padding: 15px;
+            padding: 16px;
             background-color: var(--accent-yellow);
             color: var(--primary-navy);
             font-weight: bold;
@@ -235,22 +265,34 @@
             font-size: 1.1rem;
             cursor: pointer;
             transition: 0.3s;
+            margin-top: 10px;
         }
 
-        form button:hover { background-color: white; }
+        form button:hover {
+            background-color: white;
+            transform: scale(1.02);
+        }
+
+        /* === 6. 애니메이션 === */
+        .hidden {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease-out;
+        }
+        .show { opacity: 1; transform: translateY(0); }
 
         /* 모바일 대응 */
         @media (max-width: 768px) {
             .hero h1 { font-size: 2.5rem; }
-            .section { padding: 50px 20px; }
-            .contact-section { padding: 30px; }
+            .glass-box { padding: 30px 20px; }
+            .okanagan-wrapper { padding: 60px 15px; }
         }
-
+        
         footer {
+            background: #000;
+            color: #666;
             text-align: center;
             padding: 20px;
-            background: #000;
-            color: #555;
             font-size: 0.9rem;
         }
     </style>
@@ -267,64 +309,63 @@
 
     <section class="hero">
         <div class="hero-content hidden">
-            <h1>Sparkling Clean,<br>Peace of Mind.</h1>
-            <p>Reliable Korean Janitors Serving Kelowna, BC</p>
+            <h1>We Treat Your Home<br>Like Our Own</h1>
+            <p>Reliable Family Business Serving Kelowna & Okanagan</p>
             <a href="#contact" class="btn-cta">Get a Free Quote</a>
         </div>
     </section>
 
-    <section class="section">
-        <div class="section-title hidden">About Us</div>
-        <div class="about-box hidden">
-            <p>
-                <strong>Hello, Kelowna!</strong> 👋<br>
-                We are <strong>Moon's Cleaning</strong>, a newly established cleaning service bringing fresh energy and unmatched dedication to our community.
-                <br><br>
-                As a team of Korean janitors, we pride ourselves on diligence, honesty, and attention to detail. 
-                Whether it's your cozy home or a busy office, we treat your space with the same care as our own.
-                New to the market means we work harder to earn your trust!
-            </p>
-        </div>
-    </section>
-
-    <section class="section" style="background-color: #f8fafc;">
-        <div class="section-title hidden">Our Services</div>
-        <div class="services-grid">
+    <section class="okanagan-wrapper">
+        <div class="content-container">
             
-            <div class="card hidden">
-                <i class="fas fa-home"></i>
-                <h3>Residential</h3>
-                <p>Detailed cleaning for houses, apartments, and condos.</p>
+            <div class="glass-box hidden">
+                <div class="section-title">About Us</div>
+                <p class="about-text">
+                    <strong>Hello, Neighbors!</strong> 👋<br><br>
+                    Welcome to <strong>Moon's Cleaning</strong>. We are a family-owned and operated business newly established right here in Kelowna, BC.
+                    <br><br>
+                    Being a family business means we don't just send strangers to your door; we bring our personal dedication and pride to every job. 
+                    We understand how busy life gets, and we are here to help you reclaim your time by keeping your space spotless.
+                </p>
             </div>
 
-            <div class="card hidden">
-                <i class="fas fa-briefcase"></i>
-                <h3>Commercial</h3>
-                <p>Professional office cleaning to keep your business shining.</p>
-            </div>
-
-            <div class="card hidden">
-                <i class="fas fa-truck-loading"></i>
-                <h3>Move-In / Move-Out</h3>
-                <p>Deep cleaning for a fresh start or a smooth exit.</p>
+            <div class="glass-box hidden">
+                <div class="section-title">Our Services</div>
+                <div class="services-grid">
+                    <div class="service-card">
+                        <i class="fas fa-home"></i>
+                        <h3>Residential</h3>
+                        <p>Detailed housekeeping for your peace of mind.</p>
+                    </div>
+                    <div class="service-card">
+                        <i class="fas fa-building"></i>
+                        <h3>Commercial</h3>
+                        <p>Keep your office clean and professional.</p>
+                    </div>
+                    <div class="service-card">
+                        <i class="fas fa-box"></i>
+                        <h3>Move-In / Move-Out</h3>
+                        <p>Deep cleaning for new beginnings.</p>
+                    </div>
+                </div>
             </div>
 
         </div>
     </section>
 
-    <section class="section" id="contact">
-        <div class="contact-section hidden">
+    <section class="contact-section" id="contact">
+        <div class="contact-container hidden">
             <h2>Get a Free Quote</h2>
-            <p>Serving Kelowna and surrounding areas in BC.</p>
+            <p>Tell us about your space, and we'll handle the rest.</p>
             
             <form name="submit-to-google-sheet">
                 <input name="Name" type="text" placeholder="Your Name" required>
                 <input name="Phone" type="tel" placeholder="Phone Number" required>
                 <input name="Service" type="text" placeholder="Service Type (e.g. Move-out, Office)" required>
-                <textarea name="Message" placeholder="Details (Location in Kelowna, Size, etc.)" required rows="4"></textarea>
+                <textarea name="Message" placeholder="Details (Location, Size, Specific requests...)" required rows="4"></textarea>
                 <button type="submit" id="submitBtn">Send Request</button>
             </form>
-            <div id="msg" style="margin-top:15px; font-weight:bold;"></div>
+            <div id="msg" style="margin-top:20px; font-weight:bold;"></div>
         </div>
     </section>
 
@@ -333,10 +374,9 @@
     </footer>
 
     <script>
-        // ▼▼▼ 여기에 웹 앱 URL 넣으세요! ▼▼▼
+        // ▼▼▼ 웹 앱 URL 붙여넣기 ▼▼▼
         const scriptURL = 'https://script.google.com/macros/s/AKfycbzAkSDV4qNBUnNkMYRJJ-vgse3nfkT8XoqBEVnQDJYy71dPzYbeA3vHW68ON6iM6e3ixg/exec'
         
-        // 폼 전송 스크립트
         const form = document.forms['submit-to-google-sheet']
         const btn = document.getElementById('submitBtn')
         const msg = document.getElementById('msg')
@@ -344,32 +384,31 @@
         form.addEventListener('submit', e => {
             e.preventDefault()
             btn.disabled = true;
-            btn.innerHTML = "Sending...";
+            btn.innerText = "Sending...";
             
             fetch(scriptURL, { method: 'POST', body: new FormData(form)})
             .then(response => {
-                msg.innerHTML = "<span style='color:#fcd34d'>✅ Thank you! We will contact you shortly.</span>"
+                msg.innerHTML = "<span style='color:#fcd34d'>✅ Thank you! We'll be in touch shortly.</span>"
                 form.reset();
                 btn.disabled = false;
-                btn.innerHTML = "Send Request";
+                btn.innerText = "Send Request";
                 setTimeout(() => msg.innerHTML = "", 5000);
             })
             .catch(error => {
                 msg.innerHTML = "<span style='color:#ff6b6b'>❌ Error! Please try again.</span>"
                 btn.disabled = false;
-                btn.innerHTML = "Send Request";
+                btn.innerText = "Send Request";
             })
         })
 
-        // ★ 스크롤 애니메이션 스크립트 (Intersection Observer) ★
+        // 스크롤 애니메이션
         const observer = new IntersectionObserver((entries) => {
             entries.forEach((entry) => {
                 if (entry.isIntersecting) {
-                    entry.target.classList.add('show'); // 화면에 보이면 show 클래스 추가
+                    entry.target.classList.add('show');
                 }
             });
         });
-
         const hiddenElements = document.querySelectorAll('.hidden');
         hiddenElements.forEach((el) => observer.observe(el));
     </script>
