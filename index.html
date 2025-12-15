@@ -3,69 +3,276 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Moon's Cleaning - Professional Cleaning Service</title>
+    <title>Moon's Cleaning - Korean Janitors at Your Service</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
     <style>
-        /* 기본 설정 */
-        body { margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f4f7f6; color: #333; }
-        * { box-sizing: border-box; }
+        /* === 1. 컬러 및 기본 설정 === */
+        :root {
+            --primary-navy: #1a237e; /* 밤하늘색 (신뢰) */
+            --accent-yellow: #fff176; /* 달빛색 (강조) */
+            --text-dark: #333333;
+            --bg-light: #f4f7f6;
+        }
 
-        /* 헤더 (로고 및 제목) */
-        header { background-color: #0056b3; color: white; padding: 20px; text-align: center; }
-        header h1 { margin: 0; font-size: 2.5rem; }
-        header p { margin: 10px 0 0; font-size: 1.1rem; opacity: 0.9; }
+        body, html {
+            margin: 0;
+            padding: 0;
+            font-family: 'Noto Sans', sans-serif;
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
 
-        /* 메인 컨텐츠 영역 */
-        .container { max-width: 600px; margin: 40px auto; background: white; padding: 40px; border-radius: 10px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
+        /* === 2. 헤더 & 배너 섹션 === */
+        header {
+            background-color: var(--primary-navy);
+            color: white;
+            text-align: center;
+            padding-bottom: 50px; /* 이미지가 아래로 겹치게 하기 위한 여백 */
+        }
+
+        .nav-bar {
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .logo-text {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--accent-yellow);
+        }
+
+        /* 메인 이미지 영역 */
+        .hero-image-container {
+            max-width: 800px;
+            margin: 0 auto;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            /* 이미지가 헤더와 본문 사이에 걸쳐있도록 설정 */
+            margin-top: -30px; 
+            background: white;
+        }
+
+        .hero-image-container img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* === 3. About Us 섹션 === */
+        .section {
+            padding: 60px 20px;
+            max-width: 1000px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .section h2 {
+            color: var(--primary-navy);
+            font-size: 2rem;
+            margin-bottom: 20px;
+            position: relative;
+            display: inline-block;
+        }
         
-        /* 소개글 */
-        .intro { text-align: center; margin-bottom: 30px; }
-        .intro h2 { color: #0056b3; margin-bottom: 10px; }
-        .intro p { color: #666; line-height: 1.6; }
+        /* 제목 밑줄 효과 */
+        .section h2::after {
+            content: '';
+            display: block;
+            width: 50px;
+            height: 3px;
+            background-color: var(--accent-yellow);
+            margin: 10px auto 0;
+        }
 
-        /* 입력 폼 스타일 */
-        input, textarea { width: 100%; padding: 15px; margin-bottom: 15px; border: 1px solid #ddd; border-radius: 5px; font-size: 16px; background-color: #f9f9f9; transition: 0.3s; }
-        input:focus, textarea:focus { border-color: #0056b3; background-color: white; outline: none; }
-        textarea { resize: vertical; }
+        .about-text {
+            font-size: 1.1rem;
+            color: #555;
+            max-width: 700px;
+            margin: 0 auto;
+        }
 
-        /* 버튼 스타일 */
-        button { width: 100%; padding: 15px; background-color: #00a8cc; color: white; border: none; border-radius: 5px; font-size: 18px; font-weight: bold; cursor: pointer; transition: 0.3s; }
-        button:hover { background-color: #008cb3; }
-        button:disabled { background-color: #ccc; cursor: not-allowed; }
+        /* === 4. 서비스 목록 (카드 디자인) === */
+        .services-bg {
+            background-color: white;
+        }
 
-        /* 로딩/성공 메시지 */
-        #msg { text-align: center; margin-top: 20px; font-weight: bold; display: block; }
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .service-card {
+            background: var(--bg-light);
+            padding: 30px;
+            border-radius: 10px;
+            transition: 0.3s;
+            border: 1px solid #eee;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            border-color: var(--primary-navy);
+        }
+
+        .icon-box {
+            font-size: 2.5rem;
+            color: var(--primary-navy);
+            margin-bottom: 20px;
+        }
+
+        .service-card h3 {
+            margin-bottom: 15px;
+            color: var(--primary-navy);
+        }
+
+        /* === 5. 견적 요청 폼 (Get a Quote) === */
+        .quote-section {
+            background-color: var(--primary-navy);
+            color: white;
+            border-radius: 15px;
+            padding: 40px;
+            margin-bottom: 60px;
+        }
+
+        .quote-section h2 {
+            color: white;
+        }
+
+        .quote-section p {
+            color: #ddd;
+            margin-bottom: 30px;
+        }
+
+        form {
+            max-width: 600px;
+            margin: 0 auto;
+            text-align: left;
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 15px;
+            margin-bottom: 15px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            box-sizing: border-box;
+        }
+
+        button {
+            width: 100%;
+            padding: 15px;
+            background-color: var(--accent-yellow);
+            color: var(--primary-navy);
+            border: none;
+            border-radius: 5px;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            background-color: #fff59d; /* 조금 더 밝은 노랑 */
+            transform: scale(1.02);
+        }
+
+        #msg {
+            text-align: center;
+            margin-top: 20px;
+            font-weight: bold;
+        }
+
+        /* === 6. 푸터 === */
+        footer {
+            background-color: #111;
+            color: #888;
+            text-align: center;
+            padding: 20px;
+            font-size: 0.9rem;
+        }
 
         /* 모바일 최적화 */
         @media (max-width: 600px) {
-            .container { margin: 20px; padding: 20px; }
-            header h1 { font-size: 2rem; }
+            .hero-image-container { margin-top: 0; border-radius: 0; }
+            .section h2 { font-size: 1.5rem; }
         }
     </style>
 </head>
 <body>
 
     <header>
-        <h1>Moon's Cleaning</h1>
-        <p>Spotless Cleaning, Professional Service.</p>
+        <div class="nav-bar">
+            <div class="logo-text">Moon's Cleaning</div>
+        </div>
+        <div class="hero-image-container">
+            <img src="banner.jpg" alt="Moon's Cleaning Banner">
+        </div>
     </header>
 
-    <div class="container">
-        <div class="intro">
-            <h2>Get a Free Quote</h2>
-            <p>Ready to make your space shine? <br>Fill out the form below, and we'll get back to you shortly!</p>
-        </div>
-
-        <form name="submit-to-google-sheet">
-            <input name="Name" type="text" placeholder="Your Name" required>
-            <input name="Phone" type="tel" placeholder="Phone Number" required>
-            <textarea name="Message" placeholder="Tell us about your cleaning needs..." required rows="5"></textarea>
-            <button type="submit" id="submitBtn">Send Request</button>
-        </form>
-        <div id="msg"></div>
+    <div class="section">
+        <h2>About Us</h2>
+        <p class="about-text">
+            Welcome to <strong>Moon's Cleaning</strong>. We are a team of dedicated Korean janitors committed to providing top-tier cleaning services.<br><br>
+            Just like the full moon that brightens the dark night, we bring brightness and cleanliness to your space. With our diligence, honesty, and professional skills, we treat your home and office as if they were our own.
+        </p>
     </div>
 
+    <div class="section services-bg">
+        <h2>Our Services</h2>
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="icon-box"><i class="fas fa-home"></i></div>
+                <h3>Residential Cleaning</h3>
+                <p>Keep your home spotless and healthy. We take care of every corner, from the kitchen to the bedroom.</p>
+            </div>
+            <div class="service-card">
+                <div class="icon-box"><i class="fas fa-building"></i></div>
+                <h3>Office Cleaning</h3>
+                <p>A clean workspace boosts productivity. We provide professional janitorial services for businesses.</p>
+            </div>
+            <div class="service-card">
+                <div class="icon-box"><i class="fas fa-box-open"></i></div>
+                <h3>Move-In / Move-Out</h3>
+                <p>Moving is stressful enough. Let us handle the deep cleaning so you can focus on settling in.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="quote-section">
+            <h2>Get a Free Quote</h2>
+            <p>Ready to shine? Fill out the form below, and we will get back to you with a customized estimate.</p>
+            
+            <form name="submit-to-google-sheet">
+                <input name="Name" type="text" placeholder="Your Name" required>
+                <input name="Phone" type="tel" placeholder="Phone Number" required>
+                <input name="ServiceType" type="text" placeholder="Service Type (e.g. Home, Office, Move-out)" required>
+                <textarea name="Message" placeholder="Tell us about your cleaning needs (e.g. size of the house, specific requests)..." required rows="5"></textarea>
+                <button type="submit" id="submitBtn">Send Request</button>
+            </form>
+            <div id="msg"></div>
+        </div>
+    </div>
+
+    <footer>
+        <p>© 2024 Moon's Cleaning. All rights reserved.</p>
+        <p>Serving your community with pride.</p>
+    </footer>
+
     <script>
-        // ▼▼▼ 여기에 아까 그 긴 웹 앱 URL을 다시 붙여넣으세요! ▼▼▼
+        // ▼▼▼ 여기에 본인의 웹 앱 URL을 붙여넣으세요 ▼▼▼
         const scriptURL = 'https://script.google.com/macros/s/AKfycbzAkSDV4qNBUnNkMYRJJ-vgse3nfkT8XoqBEVnQDJYy71dPzYbeA3vHW68ON6iM6e3ixg/exec'
         
         const form = document.forms['submit-to-google-sheet']
@@ -74,25 +281,21 @@
 
         form.addEventListener('submit', e => {
             e.preventDefault()
-            // 버튼 비활성화 (더블 클릭 방지)
             btn.disabled = true;
             btn.innerHTML = "Sending...";
-            msg.innerHTML = "";
-
+            
             fetch(scriptURL, { method: 'POST', body: new FormData(form)})
             .then(response => {
-                msg.innerHTML = "<span style='color:green'>Thank you! Your message has been sent.</span>"
-                msg.style.color = "green";
+                msg.innerHTML = "<span style='color:#fff176'>✅ Message sent successfully! We will contact you soon.</span>"
                 form.reset();
                 btn.disabled = false;
                 btn.innerHTML = "Send Request";
+                setTimeout(function(){ msg.innerHTML = ""; }, 5000);
             })
             .catch(error => {
-                msg.innerHTML = "<span style='color:red'>Error! Please try again later.</span>"
-                msg.style.color = "red";
+                msg.innerHTML = "<span style='color:red'>❌ Error! Please try again.</span>"
                 btn.disabled = false;
                 btn.innerHTML = "Send Request";
-                console.error('Error!', error.message)
             })
         })
     </script>
